@@ -1,0 +1,39 @@
+{
+  "name": "exercises",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "exercise_1": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"nodemon src/01-introduction/introduction.bs.js\"",
+    "exercise_2": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/02-basic_types/basicTypes.bs.js\"",
+    "exercise_3": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/03-define_functions/defineFunctions.bs.js\"",
+    "exercise_4": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/04-call_functions/callFunctions.bs.js\"",
+    "exercise_5": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/05-twice/twice.bs.js\"",
+    "exercise_6": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/06-pattern_matching/patternMatching.bs.js\"",
+    "exercise_7": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/07-simple_recursion/simpleRecursion.bs.js\"",
+    "exercise_8": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/08-list_intro/listIntro.bs.js\"",
+    "exercise_9": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/09-list_range/listRange.bs.js\"",
+    "exercise_10": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/10-list_product/listProduct.bs.js\"",
+    "exercise_11": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/11-sum_product/sumProduct.bs.js\"",
+    "exercise_12": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/12-list_min/listMin.bs.js\"",
+    "exercise_13": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/13-largest_smallest/largestSmallest.bs.js\"",
+    "exercise_14": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/14-variants/variants.bs.js\"",
+    "exercise_15": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/15-tuples/tuples.bs.js\"",
+    "exercise_16": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/16-labelled_arguments/labelledArguments.bs.js\"",
+    "exercise_17": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/17-options/options.bs.js\"",
+    "exercise_18": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/18-anonymous_functions/anonymousFunctions.bs.js\"",
+    "exercise_19": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/19-list_operations/listOperations.bs.js\"",
+    "exercise_20": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/20-reading_sigs/readingSigs.bs.js\"",
+    "exercise_21": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/21-writing_list_operations/writingListOperations.bs.js\"",
+    "exercise_22": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/22-records/records.bs.js\"",
+    "exercise_23": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/23-mutable_records/mutableRecords.bs.js\"",
+    "exercise_24": "concurrently --names \"REASONML,TEST\" -c \"red.bold,green.bold\" \"bsb -make-world -w\" \"node src/24-refs/refs.bs.js\""
+  },
+  "devDependencies": {
+    "bs-platform": "^7.0.1",
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  },
+  "license": "MIT"
+}

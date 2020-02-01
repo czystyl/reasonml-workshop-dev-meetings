@@ -1,0 +1,1427 @@
+import {
+  CodeSurfer,
+  CodeSurferColumns,
+  Step,
+} from "code-surfer";
+import { Head, Image, Appear, Notes, Embed } from "mdx-deck";
+import { github, nightOwl } from "@code-surfer/themes";
+
+import error1 from './errorv1.png';
+
+export const theme = nightOwl;
+
+<Head>
+  <title>ReasonML workshop</title>
+</Head>
+
+# Hello DevMeetings 👋
+
+### `@czystyl`
+
+---
+
+# Question for today:
+
+### Can software development be better?
+
+---
+
+<Image src="https://miro.medium.com/max/3840/1*fkrDwG7tPmkuO756jq6Qnw.png" />
+
+---
+
+# Modules 
+
+<Appear>
+  <li>are like mini files!</li>
+  <li>every file is a module</li>
+  <li>folder is <b>not</b> a module</li>
+</Appear>
+
+---
+
+<CodeSurfer>
+
+  ```reason 1,5 title="Module definition"
+  module MyModule = {
+    module NestedModule = {
+      let message = "hello";
+    };
+  };
+
+  let message = MyModule.NestedModule.message;
+  ```
+
+  ```reason 2:4 title="Nested module"
+  module MyModule = {
+    module NestedModule = {
+      let message = "hello";
+    };
+  };
+
+  let message = MyModule.NestedModule.message;
+  ```
+
+  ```reason 7 title="Access to module let bindings"
+  module MyModule = {
+    module NestedModule = {
+      let message = "hello";
+    };
+  };
+
+  let message = MyModule.NestedModule.message;
+  ```
+
+</CodeSurfer>
+
+---
+
+
+<CodeSurfer>
+
+  ```reason 2 file=./src/fundamentals/Overview.re title="Strings" subtitle="Strings"
+  ```
+
+  ```reason 3 file=./src/fundamentals/Overview.re title="Characters" subtitle="Characters"
+  ```
+
+  ```reason 5 file=./src/fundamentals/Overview.re title="Integers" subtitle="Integers"
+  ```
+
+  ```reason 6 file=./src/fundamentals/Overview.re title="Floats" subtitle="Floats"
+  ```
+
+  ```reason 8 file=./src/fundamentals/Overview.re title="Integer Addition" subtitle="Integer Addition"
+  ```
+
+  ```reason 9 file=./src/fundamentals/Overview.re title="Float Addition" subtitle="Float Addition"
+  ```
+
+  ```reason 11 file=./src/fundamentals/Overview.re title="Integer Division/Multiplication" subtitle="Integer Division/Multiplication"
+  ```
+
+  ```reason 12   file=./src/fundamentals/Overview.re title="Float Division/Multiplication" subtitle="Float Division/Multiplication"
+  ```
+
+  ```reason 14 file=./src/fundamentals/Overview.re title="String Concatenation" subtitle="String Concatenation"
+  ```
+
+  ```reason 16:20 file=./src/fundamentals/Overview.re title="Comparison" subtitle="Comparison"
+  ```
+
+  ```reason 21:23 file=./src/fundamentals/Overview.re title="Boolean operations" subtitle="Boolean operations"
+  ```
+
+  ```reason 24:26 file=./src/fundamentals/Overview.re title="Reference, Structural (deep) Equality" subtitle="Reference, Structural (deep) Equality"
+  ```
+
+  ```reason 28 file=./src/fundamentals/Overview.re title="Immutable Lists" subtitle="Immutable Lists"
+  ```
+
+  ```reason 30:37 file=./src/fundamentals/Overview.re title="Arrays" subtitle="Arrays"
+  ```
+
+  ```reason 39 file=./src/fundamentals/Overview.re title="Comments" subtitle="Comments"
+  ```
+
+  ```reason 41:46 file=./src/fundamentals/Overview.re title="Record type" subtitle="Record type"
+  ```
+
+  ```reason 48:53 file=./src/fundamentals/Overview.re title="Record" subtitle="Record"
+  ```
+
+  ```reason 41:53 file=./src/fundamentals/Overview.re title="Full Record definition" subtitle="Full Record definition"
+  ```
+
+  ```reason file=./src/fundamentals/Overview.re title="Module" subtitle="Module"
+  ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
+  ```reason 1:4 file=./src/fundamentals/Let.re title="Let binding" subtitle="Let binding"
+  ```
+
+  ```reason 5:10 file=./src/fundamentals/Let.re title="Block Scope" subtitle="Block Scope"
+  ```
+
+  ```reason 11:17 file=./src/fundamentals/Let.re title="Bindings Are Immutable" subtitle="Bindings Are Immutable"
+  ```
+
+  ```reason 18:22 file=./src/fundamentals/Let.re 
+  ```
+
+</CodeSurfer>
+
+---
+
+# Tuple
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
+  ```reason 1 file=./src/fundamentals/Tuple.re title="Tuple" subtitle="(float, flaot, int)"
+  ```
+
+  ```reason 3 file=./src/fundamentals/Tuple.re title="Tuple" subtitle="(string, int, list(string))"
+  ```
+
+  ```reason 5 file=./src/fundamentals/Tuple.re title="get x, y and z" subtitle="from coordinates"
+  ```
+
+  ```reason 8 file=./src/fundamentals/Tuple.re  title="get title and writters" subtitle="omit year"
+  ```
+
+  ```reason 7:11 file=./src/fundamentals/Tuple.re  title="Used in function" subtitle="return new tuple with title and writters"
+  ```
+
+</CodeSurfer>
+
+---
+
+# Types!
+
+<Appear>
+  <h2>Types can be inferred</h2>
+  <h2>The type coverage is always 100%</h2>
+  <a href="https://reasonml.github.io/try" target="_blank"><h2>Go and try</h2></a>
+</Appear>
+
+--- 
+
+# Records 
+
+are **like JavaScript** objects **but**:
+
+<Appear>
+  <li>are immutable by default</li>
+  <li>need type definition</li>
+  <li>field names and types are fixed</li>
+</Appear>
+
+--- 
+
+<CodeSurferColumns theme={nightOwl}>
+<Step subtitle="Record Needs an Explicit Definition">
+
+  ```reason 1:4 file=./src/fundamentals/Record.re title="ReasonML" 
+  ```
+
+  ```js 4:12 file=./src/fundamentals/Record.bs.js title="JavaScript" 
+  ```
+
+</Step>
+
+<Step subtitle="Usage">
+
+  ```reason 1:6 file=./src/fundamentals/Record.re title="ReasonML" 
+  ```
+
+  ```js 8:12 file=./src/fundamentals/Record.bs.js title="JavaScript" 
+  ```
+
+</Step>
+
+<Step subtitle="Access">
+
+  ```reason 8:10 file=./src/fundamentals/Record.re title="ReasonML" 
+  ```
+
+  ```js 20:23 file=./src/fundamentals/Record.bs.js title="JavaScript" 
+  ```
+
+</Step>
+
+<Step subtitle="Immutable Update">
+
+  ```reason 11:12 file=./src/fundamentals/Record.re title="ReasonML" 
+  ```
+
+  ```js 4:7  file=./src/fundamentals/Record.bs.js title="JavaScript" 
+  ```
+
+</Step>
+
+<Step subtitle="Mutable Update">
+
+  ```reason 14:20 file=./src/fundamentals/Record.re title="ReasonML" 
+  ```
+
+  ```js 8:14  file=./src/fundamentals/Record.bs.js title="JavaScript" 
+  ```
+
+</Step>
+
+<Step subtitle="ReasonML Records vs JS Objects">
+
+  ```reason file=./src/fundamentals/Record.re title="ReasonML" 
+  ```
+
+  ```js 4:28 file=./src/fundamentals/Record.bs.js title="JavaScript" 
+  ```
+
+</Step>
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns theme={nightOwl}>
+
+<Step subtitle="basic function definition">
+
+  ```reason 1 file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 4:7 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step subtitle="function definition with long body">
+
+  ```reason 3:8  file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 8:10 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step title="Why JS side is so weird?" subtitle="calling a function">
+
+  ```reason 10  file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 52 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step subtitle="function with arguments">
+
+  ```reason 12  file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 12:13 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step title="Why JS side is so weird?" subtitle="apply arguments to a function">
+
+  ```reason 13  file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 54 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step subtitle="Currying">
+
+  ```reason 15:16  file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 16:20 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step subtitle="multiple arguments in JavaScript">
+
+  ```js 20:22  file=./src/fundamentals/Function.re title="2. JavaScript definition" 
+  ```
+
+  ```js 27 file=./src/fundamentals/Function.bs.js title="1. What argument present what?" 
+  ```
+</Step>
+
+<Step subtitle="better multiple arguments in JavaScript using Object">
+
+  ```reason 30:32  file=./src/fundamentals/Function.re title="JavaScript definition" 
+  ```
+
+  ```js 35:38 file=./src/fundamentals/Function.bs.js title="One argument as Object" 
+  ```
+</Step>
+
+<Step subtitle="labelled arguments in ReasonML">
+
+  ```reason 41:47  file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 41:43,56 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+
+<Step subtitle="recursive function in ReasonML">
+
+  ```reason 49  file=./src/fundamentals/Function.re title="ReasonML" 
+  ```
+
+  ```js 45:50 file=./src/fundamentals/Function.bs.js title="JavaScript" 
+  ```
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+# Destructuring
+
+```js
+const { age } = { name: "Lucy", age: 21 };
+```
+```js
+const [x, y] = ["17.1823", "53.1232"];
+```
+```js
+const [state, setState] = React.useState(0);
+```
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
+  ```reason 1 file=./src/fundamentals/Destructuring.re title="Open a module" subtitle="Because we do not need imports"
+  ```
+
+  ```reason 3:4 file=./src/fundamentals/Destructuring.re title="destructuring list" 
+  ```
+
+  ```reason 6:7 file=./src/fundamentals/Destructuring.re title="destructuring records" 
+  ```
+
+</CodeSurfer>
+
+---
+
+# if () { } else { }
+
+---
+
+<CodeSurferColumns theme={nightOwl}>
+
+<Step subtitle="If else statements">
+
+  ```reason 3:11 file=./src/fundamentals/IfElse.re title="ReasonML" 
+  ```
+
+  ```js 3 file=./src/fundamentals/IfElse.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step subtitle="assign if to variable">
+
+  ```reason 13:22 file=./src/fundamentals/IfElse.re title="ReasonML" 
+  ```
+
+  ```js 4 file=./src/fundamentals/IfElse.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step subtitle="ternary operator">
+
+  ```reason 24 file=./src/fundamentals/IfElse.re title="ReasonML" 
+  ```
+
+  ```js 6 file=./src/fundamentals/IfElse.bs.js title="JavaScript" 
+  ```
+</Step>
+
+<Step subtitle="Yes, ReasonML has a switch but a different one!">
+
+  ```reason title="before save" 
+  switch (isMorning) {
+  | true => "Good morning!"
+  | false => "Hello!"
+  }
+  ```
+
+  ```reason 1:5 title="after save" 
+  isMorning ? "Good morning!" : "Hello!";
+  ```
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+# Variant!
+
+<h2 style="text-align: center; "><p>"Behold, the <span style="color: gold">crown jewel</span></p> of Reason data structures!"</h2>
+
+--- 
+
+<CodeSurferColumns theme={nightOwl}>
+
+<Step subtitle="Variants definition">
+
+  ```reason 1:4 file=./src/fundamentals/Variant.re title="ReasonML" 
+  ```
+  
+  ```js 2 file=./src/fundamentals/Variant.bs.js title="Nothing in JS world" 
+  ```
+</Step>
+
+<Step subtitle="Variants">
+
+  ```reason 1:4 file=./src/fundamentals/Variant.re title="ReasonML" 
+  ```
+
+  ```js 1:3 title="It could be..." 
+  const Yes= 'Yes';
+  const No = 'No';
+  const IDontKnow = 'IDontKnow';
+  ```
+
+</Step>
+
+<Step subtitle="Variants definition">
+
+  ```reason 6:7 file=./src/fundamentals/Variant.re title="ReasonML" 
+  ```
+  
+  ```js 9:11 file=./src/fundamentals/Variant.bs.js title="JavaScript" 
+  ```
+
+</Step>
+
+<Step subtitle="Variants constructor">
+
+  ```reason 9:12 file=./src/fundamentals/Variant.re title="ReasonML" 
+  ```
+  
+  ```js title="JavaScript" 
+  Try to guess how it could be defined...
+  ```
+
+</Step>
+
+<Step subtitle="Variants definition">
+
+  ```reason 14:16 file=./src/fundamentals/Variant.re title="ReasonML" 
+  ```
+  
+  ```js 5,13,15 file=./src/fundamentals/Variant.bs.js title="JavaScript" 
+  ```
+  
+</Step>
+
+<Step subtitle="No null, no undefined">
+
+  ```reason 18:24 file=./src/fundamentals/Variant.re title="ReasonML" 
+  ```
+  
+  ```js 1:5 title="JavaScript" 
+  undefined;
+  
+  or
+
+  null;
+  ```
+  
+</Step>
+
+<Step subtitle="option type">
+
+  ```reason 26:27 file=./src/fundamentals/Variant.re title="ReasonML" 
+  ```
+  
+  ```js 7,17 file=./src/fundamentals/Variant.bs.js title="JavaScript" 
+  ```
+  
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+# How to handle options?
+
+<Appear>
+  <h1><span style="color: gold">🏆 Pattern Matching! 🚀</span></h1>
+</Appear>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
+  ```reason 1:3 file=./src/fundamentals/PatternMatching_v1.re title="answer type" 
+  ```
+
+  ```reason 1:3,5 file=./src/fundamentals/PatternMatching_v1.re title="optional answer type" 
+  ```
+
+  ```reason 7:9 file=./src/fundamentals/PatternMatching_v1.re title="possible cases" 
+  ```
+
+  ```reason 1:6 title="Handle case when we do not have answer"
+  let checkAnswer = (arg: optionAnswer) => {
+    switch (arg) {
+    | None => "Player does not answer"
+    };
+  };
+  ```
+  
+  ```reason 4:8 subtitle="Warning 8: this pattern-matching is not exhaustive."
+  let checkAnswer = (arg: optionAnswer) => {
+    switch (arg) {
+    | None => "Player does not answer"
+    /* 
+    Warning 8: this pattern-matching is not exhaustive.
+    Here is an example of a case that is not matched:
+    Some _
+    */
+    };
+  };
+  ```
+
+  ```reason 1:6 title="Handle missing case" 
+  let checkAnswer = (arg: optionAnswer) => {
+    switch (arg) {
+    | None => "Player does not answer"
+    | Some(_) => "Player answered"
+    };
+  };
+  ```
+
+
+  ```reason 4[5:11] title="Some(_)" subtitle="We still do not know the real answer..."
+  let checkAnswer = (arg: optionAnswer) => {
+    switch (arg) {
+    | None => "Player does not answer"
+    | Some(_) => "Player answered"
+    };
+  };
+  ```
+
+  ```reason 5:8 title="Get the answer from Some" subtitle="Using another Pattern Matching 🤯"
+  let checkAnswer = (arg: optionAnswer) => {
+    switch (arg) {
+    | None => "Player does not answer"
+    | Some(answer) =>
+      switch (answer) {
+      | Yes => "Player answered YES"
+      | No => "Player answered NO"
+      }
+    };
+  };
+  ```
+
+  ```js 4:14 file=./src/fundamentals/PatternMatching_v1.bs.js title="JavaScript version" 
+  ```
+
+</CodeSurfer>
+
+--- 
+
+# More Pattern Matching
+
+---
+
+<CodeSurfer>
+
+  ```reason 1 file=./src/fundamentals/PatternMatching_v2.re title="choose type" 
+  ```
+  
+  ```reason 5:10 file=./src/fundamentals/PatternMatching_v2.re title="check only first argument from the pair" subtitle="Not so smart, we could just omit the second argument" 
+  ```
+
+  ```reason 12:17 file=./src/fundamentals/PatternMatching_v2.re title="check if both won" subtitle="now it makes sense" 
+  ```
+
+  ```reason 19:27 file=./src/fundamentals/PatternMatching_v2.re title="recursive usage" subtitle="JS equivalent??" 
+  ```
+
+</CodeSurfer>
+
+---
+
+# ReasonReact 🚀
+
+---
+
+<CodeSurferColumns>
+
+  <Step subtitle="just a function">
+
+  ```reason 1 title="ReasonML"
+  let make = () => ();  
+  ```
+
+  ```js 1:3 title="JavaScript"
+  const StarButton = () => {};
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+
+  <Step subtitle="Add React">
+
+  ```reason 1 title="ReasonML"
+  [@react.component]
+  let make = () => ();
+  ```
+
+  ```js 1 title="JavaScript"
+  import React from "react";
+
+  const StarButton = () => {};
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="Add <div />">
+
+  ```reason 2 title="ReasonML"
+  [@react.component]
+  let make = () => <div />;
+  ```
+
+  ```js 3 title="JavaScript"
+  import React from "react";
+
+  const StarButton = () => <div />;
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="Add another react element">
+
+  ```reason 3:5 title="ReasonML"
+  [@react.component]
+  let make = () => {
+    <div className="star-button-container">
+      <span> ... </span>
+    </div>;
+  };
+  ```
+
+  ```js 5:7 title="JavaScript"
+  import React from "react";
+
+  const StarButton = () => {
+    return (
+      <div className="star-button-container">
+        <span>...</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="return">
+
+  ```reason 2[18:19],3:6 title="ReasonML"
+  [@react.component]
+  let make = () => {
+    <div className="star-button-container">
+      <span> ... </span>
+    </div>;
+  };
+  ```
+
+  ```js 3[25:26],4:9 title="JavaScript"
+  import React from "react";
+
+  const StarButton = () => {
+    return (
+      <div className="star-button-container">
+        <span>...</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="Add text to <span />">
+
+  ```reason 2[18:19],3:6 title="ReasonML"
+  [@react.component]
+  let make = () => {
+    <div className="star-button-container">
+      <span>Hello Dev meetings 👋</span>
+    </div>;
+  };
+  ```
+
+  ```js 3[25:26],4:9 title="JavaScript"
+  import React from "react";
+
+  const StarButton = () => {
+    return (
+      <div className="star-button-container">
+        <span>Hello Dev meetings 👋</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+</CodeSurferColumns>
+
+--- 
+
+<img src={error1} />
+
+---
+
+<CodeSurferColumns>
+
+  <Step subtitle="Add text to <span />">
+
+  ```reason 2[18:19],3:6 title="ReasonML"
+  [@react.component]
+  let make = () => {
+    <div className="star-button-container">
+      <span>Hello Dev meetings 👋</span>
+    </div>;
+  };
+  ```
+
+  ```js 3[25:26],4:9 title="JavaScript"
+  import React from "react";
+
+  const StarButton = () => {
+    return (
+      <div className="star-button-container">
+        <span>Hello Dev meetings 👋</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="React.string is required to satisfy the type system">
+
+  ```reason 4[12:49] title="ReasonML"
+  [@react.component]
+  let make = () => {
+    <div className="star-button-container">
+      <span> {React.string("Hello Dev meetings 👋")} </span>
+    </div>;
+  };
+  ```
+
+  ```js 6[13:32] title="JavaScript"
+  import React from "react";
+
+  const StarButton = () => {
+    return (
+      <div className="star-button-container">
+        <span>Hello Dev meetings 👋</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+ 
+  <Step subtitle="Use Props">
+
+  ```reason 7 title="ReasonML"
+  [@react.component]
+  let make = () => {
+    <div className="star-button-container">
+      <span> {React.string("Hello Dev meetings 👋")} </span>
+    </div>;
+  };
+  ```
+
+  ```js 3[20:24],6 title="JavaScript"
+  import React from "react";
+
+  const StarButton = props => {
+    return (
+      <div className="star-button-container">
+        <span>Hello {props.name} 👋</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="Use Props">
+
+  ```reason title="ReasonML"
+  [@react.component]
+  let make = (~name) => {
+    <div className="star-button-container">
+      <span> {React.string("Hello" ++ name ++ "👋 ")} </span>
+    </div>;
+  };
+  ```
+
+  ```js 3[20:24],6 title="JavaScript"
+  import React from "react";
+
+  const StarButton = props => {
+    return (
+      <div className="star-button-container">
+        <span>Hello {props.name} 👋</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="Empty React component">
+
+  ```reason 5 title="ReasonML"
+  [@react.component]
+  let make = (~name) => {
+    <div className="star-button-container">
+      <span> {React.string("Hello" ++ name ++ "👋 ")} </span>
+      {name === "Luke" ? <Component /> : React.null}
+    </div>;
+  };
+  ```
+
+  ```js 7 title="JavaScript"
+  import React from "react";
+
+  const StarButton = props => {
+    return (
+      <div className="star-button-container">
+        <span>Hello {props.name} 👋</span>
+        {name === "Luke" ? <Component /> : null}
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="Array of components">
+
+  ```reason 6:8 title="ReasonML"
+  [@react.component]
+  let make = (~name) => {
+    <div className="star-button-container">
+      <span> {React.string("Hello" ++ name ++ "👋 ")} </span>
+      {name === "Luke" ? <Component /> : React.null}
+      {[|"red", "green", "blue"|]
+        |> Array.map(colour => <span> {React.string(colour)} </span>)
+        |> React.array}
+    </div>;
+  };
+  ```
+
+  ```js 8:10 title="JavaScript"
+  import React from "react";
+
+  const StarButton = props => {
+    return (
+      <div className="star-button-container">
+        <span>Hello {props.name} 👋</span>
+        {name === "Luke" ? <Component /> : React.null}
+        {["red", "green", "blue"].map(colour => (
+          <span>{colour}</span>
+        ))}
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+  <Step subtitle="Full overview">
+
+  ```reason title="ReasonML"
+  [@react.component]
+  let make = (~name) => {
+    <div className="star-button-container">
+      <span> {React.string("Hello" ++ name ++ "👋 ")} </span>
+    </div>;
+  };
+  ```
+
+  ```js title="JavaScript"
+  import React from "react";
+
+  const StarButton = props => {
+    return (
+      <div className="star-button-container">
+        <span>Hello {props.name} 👋</span>
+      </div>
+    );
+  };
+
+  export default StarButton;
+  ```
+
+  </Step>
+
+</CodeSurferColumns>
+
+---
+
+# useState 🔧
+
+---
+
+<CodeSurferColumns>
+
+  <Step subtitle="Example of JS implementation">
+
+  ```reason title="ReasonML"
+  let make = (~label, ~handleCheckboxChange) => {
+    <label>
+      <input
+        type_="checkbox"
+        value=label
+        {/* checked=isChecked */}
+        {/* onChange=toggleCheckboxChange */}
+      />
+      <span className="checkmark"> {React.string(label)} </span>
+    </label>;
+  };
+  ```
+
+  ```js title="JavaScript"
+  import React from "react";
+
+  const Checkbox = ({ label, handleCheckboxChange }) => {
+    const [isChecked, setIsChecked] = React.useState(false);
+
+    const toggleCheckboxChange = React.useCallback(() => {
+      setIsChecked(prevState => !prevState);
+      handleCheckboxChange(label);
+    });
+
+    return (
+      <label>
+        <input
+          type="checkbox"
+          value={label}
+          checked={isChecked}
+          onChange={toggleCheckboxChange}
+        />
+
+        <span className="checkmark">{label}</span>
+      </label>
+    );
+  };
+
+  export default Checkbox;
+  ```
+
+  </Step>
+
+
+  <Step subtitle="React.useState">
+
+  ```reason title="ReasonML"
+  let make = (~label, ~handleCheckboxChange) => {
+    let (isChecked, setIsChecked) = React.useState(() => false);
+
+    <label>
+      <input
+        type_="checkbox"
+        value=label
+        checked=isChecked
+        {/* onChange=toggleCheckboxChange */}
+      />
+      <span className="checkmark"> {React.string(label)} </span>
+    </label>;
+  };
+  ```
+
+  ```js 4,16 title="JavaScript"
+  import React from "react";
+
+  const Checkbox = ({ label, handleCheckboxChange }) => {
+    const [isChecked, setIsChecked] = React.useState(false);
+
+    const toggleCheckboxChange = React.useCallback(() => {
+      setIsChecked(prevState => !prevState);
+      handleCheckboxChange(label);
+    });
+
+    return (
+      <label>
+        <input
+          type="checkbox"
+          value={label}
+          checked={isChecked}
+          onChange={toggleCheckboxChange}
+        />
+
+        <span className="checkmark">{label}</span>
+      </label>
+    );
+  };
+
+  export default Checkbox;
+  ```
+
+  </Step>
+
+  <Step subtitle="React.useCallback">
+
+  ```reason title="ReasonML"
+  let make = (~label, ~handleCheckboxChange) => {
+    let (isChecked, setIsChecked) = React.useState(() => false);
+
+  let toggleCheckboxChange =
+    React.useCallback(_ => {
+      setIsChecked(prevState => !prevState);
+      handleCheckboxChange(label);
+    });
+
+    <label>
+      <input
+        type_="checkbox"
+        value=label
+        checked=isChecked
+        onChange=toggleCheckboxChange
+      />
+      <span className="checkmark"> {React.string(label)} </span>
+    </label>;
+  };
+  ```
+
+  ```js 6:9,17 title="JavaScript"
+  import React from "react";
+
+  const Checkbox = ({ label, handleCheckboxChange }) => {
+    const [isChecked, setIsChecked] = React.useState(false);
+
+    const toggleCheckboxChange = React.useCallback(() => {
+      setIsChecked(prevState => !prevState);
+      handleCheckboxChange(label);
+    });
+
+    return (
+      <label>
+        <input
+          type="checkbox"
+          value={label}
+          checked={isChecked}
+          onChange={toggleCheckboxChange}
+        />
+
+        <span className="checkmark">{label}</span>
+      </label>
+    );
+  };
+
+  export default Checkbox;
+  ```
+
+  </Step>
+
+</CodeSurferColumns>
+
+--- 
+
+# useReducer 🛠
+
+---
+
+<CodeSurfer>
+
+```reason 21 file=./src/reason-react/Counter.re title="declaration"
+```
+
+```reason 7,9,21[53:64] file=./src/reason-react/Counter.re title="State type"
+```
+
+```reason 1:5 file=./src/reason-react/Counter.re title="Action type"
+```
+
+```reason 11:17,21[44:50] file=./src/reason-react/Counter.re title="Reducer"
+```
+
+```reason 27[27:45],28[27:45],29[27:41],33[9:43] file=./src/reason-react/Counter.re title="Using Action"
+```
+
+```reason file=./src/reason-react/Counter.re
+```
+
+</CodeSurfer>
+
+---
+
+# Existing Js Component
+
+---
+
+<CodeSurferColumns sizes={[1,2]}>
+  
+  <Step>    
+
+  ```reason 5 file=./src/reason-react/SelectBox.re 
+  ```
+
+  ```js 4:8,26:30 file=./src/reason-react/SelectBox.js title="👵 prop types 👴"
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 5 file=./src/reason-react/SelectBox.re 
+  ```
+
+  ```js 10:14,27 file=./src/reason-react/SelectBox.js title="array(❓)"
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 5 file=./src/reason-react/SelectBox.re 
+  ```
+
+  ```js 11[21:29],12[9:17],27 file=./src/reason-react/SelectBox.js title="array(❓)"
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 5 file=./src/reason-react/SelectBox.re 
+  ```
+
+  ```js 18,28 file=./src/reason-react/SelectBox.js title="string type"
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 5 file=./src/reason-react/SelectBox.re 
+  ```
+
+  ```js 19,29 file=./src/reason-react/SelectBox.js title="function args type❓" subtitle="function return type❓"
+  ```
+
+  </Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns sizes={[2,1]}>
+  
+  <Step>    
+
+  ```reason file=./src/reason-react/SelectBox.re 
+  ```
+
+  ```js 4:8,26:30 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 6 file=./src/reason-react/SelectBox.re title="@bs.module to local file" subtitle="to use the package: '[@bs.module "ant-design"]'"
+  ```
+
+  ```js 4:8,26:30 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 6,7[1:8] file=./src/reason-react/SelectBox.re title="external" subtitle="foreign function interface"
+  ```
+
+  ```js 4:8,26:30 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 7[9:15],8:12,13[1:15] file=./src/reason-react/SelectBox.re title="component props type" subtitle="and return type"
+  ```
+
+  ```js 4:8,26:30 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 9 file=./src/reason-react/SelectBox.re title="optional string type"
+  ```
+
+  ```js 18,28 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+
+  <Step>    
+
+  ```reason 1:4,11 file=./src/reason-react/SelectBox.re title="array of sort item"
+  ```
+
+  ```js 10:14,27 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+  
+  <Step>    
+
+  ```reason 10 file=./src/reason-react/SelectBox.re title="string argument type" subtitle="unit return type"
+  ```
+
+  ```js 19,29 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+  
+  <Step>    
+
+  ```reason file=./src/reason-react/SelectBox.re title="string argument type" subtitle="unit return type"
+  ```
+
+  ```js 15 file=./src/reason-react/SelectBox.js
+  ```
+
+  </Step>
+
+</CodeSurferColumns>
+
+---
+
+# 🕸 ReasonReact Demo time 👨🏻‍💻
+
+--- 
+
+# 👩‍💻 Your turn 👨‍💻 
+
+---
+
+1. Clone project from [react-shopping-cart](https://github.com/jeffersonRibeiro/react-shopping-cart)
+2. `Run` and `get yourself familiar` with the project
+3. Add `ReasonReact` support using [this docs](https://reasonml.github.io/reason-react/docs/en/installation#adding-reason-bucklescript-to-an-existing-project)
+4. Make your App Reason like 🧨
+
+---
+
+# Bonus 🎁
+
+## Native development 🖥
+
+---
+
+<h1>
+  <a target="_blank" href="https://www.outrunlabs.com/revery/playground/">🎮 PLAYGROUND 🎮</a>
+</h1>
+
+---
+
+## What is needed to start?
+
+1. [Esy](https://esy.sh/) - any native development project
+2. [Revery](https://www.outrunlabs.com/revery/) - desktop native development 
+3. [ReNative](https://reason-native.com/) - Libraries for building and testing native Reason programs.
+
+--- 
+
+<CodeSurfer>
+
+```reason title="Revery component"
+let make = (~sign: player, ()) => {
+  let containerStyle = Style.[height(100), width(100)];
+
+  let iconType =
+    switch (sign) {
+    | Cross => "cross.png"
+    | Circle => "circle.png"
+    };
+
+  <Image src=iconType style=containerStyle />;
+};
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```reason file=./src/ReveryComponent.re_ 
+```
+
+```reason 1:4 file=./src/ReveryComponent.re_ title="Used modules"
+```
+
+```reason 6 file=./src/ReveryComponent.re_ title="Component definition" subtitle="let%component ~ [@react.component]"
+```
+
+```reason 7,8 file=./src/ReveryComponent.re_ title="Hooks" subtitle="let%hooks ~ PPX"
+```
+
+```reason 10:21 file=./src/ReveryComponent.re_ title="More Hooks"
+```
+
+```reason 11:12 file=./src/ReveryComponent.re_ title="Hooks condition"
+```
+
+```reason 12[7:22] file=./src/ReveryComponent.re_ title="effect condition"
+```
+
+```reason 23:40 file=./src/ReveryComponent.re_ title="just a function"
+```
+
+```reason 42:45 file=./src/ReveryComponent.re_ title="another function"
+```
+
+```reason 47:58 file=./src/ReveryComponent.re_ title="styles definition"
+```
+
+```reason 60:70 file=./src/ReveryComponent.re_ title="return tree"
+```
+
+```reason file=./src/ReveryComponent.re_ title="return tree"
+```
+
+</CodeSurfer>
+
+---
+
+# 🖥 Revery Demo time 👨🏻‍💻
+
+# ❌ 🆚 ⭕️
+
+---
+
+# Exercise 🙆‍♀️
+
+## [Make ❌ 🆚 ⭕️ work 🚀](https://github.com/czystyl/x_vs_o_revery_todo)

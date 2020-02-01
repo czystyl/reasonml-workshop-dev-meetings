@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx",
+    "test": "echo \"there are no tests\"",
+    "re:build": "bsb -make-world -clean-world",
+    "re:watch": "bsb -make-world -clean-world -w"
+  },
+  "devDependencies": {
+    "bs-platform": "^7.0.1",
+    "code-surfer": "3.0.0",
+    "mdx-deck": "3.0.13",
+    "reason-react": "^0.7.0"
+  },
+  "name": "presentation",
+  "dependencies": {}
+}
